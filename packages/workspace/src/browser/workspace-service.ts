@@ -373,6 +373,10 @@ export class WorkspaceService implements FrontendApplicationContribution {
         await this.spliceRoots(this._roots.length, 0, uri);
     }
 
+    async addRoots(...uris: URI[]): Promise<void> {
+        await this.spliceRoots(this._roots.length, 0, ...uris);
+    }
+
     /**
      * Removes root folder(s) from workspace.
      */
@@ -388,6 +392,7 @@ export class WorkspaceService implements FrontendApplicationContribution {
                     workspaceData
                 )
             );
+            await this.updateWorkspace();
         }
     }
 
@@ -416,6 +421,7 @@ export class WorkspaceService implements FrontendApplicationContribution {
         const currentData = await this.getWorkspaceDataFromFile();
         const newData = WorkspaceData.buildWorkspaceData(roots, currentData);
         await this.writeWorkspaceFile(this._workspace, newData);
+        await this.updateWorkspace();
         return toRemove.map(root => new URI(root));
     }
 
