@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (C) 2017 TypeFox and others.
+ * Copyright (C) 2021 Ericsson and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,12 +14,12 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import { ContainerModule } from '@theia/core/shared/inversify';
-import { loadMonaco, loadVsRequire } from './monaco-loader';
+import { ContainerModule } from 'inversify';
+import { AsyncLocalizationProvider, localizationPath } from '../../common/i18n/localization';
+import { WebSocketConnectionProvider } from '../messaging/ws-connection-provider';
 
-export { ContainerModule };
-
-export default loadVsRequire(window)
-    .then(vsRequire => loadMonaco(vsRequire))
-    .then(() => import('./monaco-frontend-module'))
-    .then(jsModule => jsModule.default);
+export default new ContainerModule(bind => {
+    bind(AsyncLocalizationProvider).toDynamicValue(
+        ctx => ctx.container.get(WebSocketConnectionProvider).createProxy(localizationPath)
+    ).inSingletonScope();
+});
