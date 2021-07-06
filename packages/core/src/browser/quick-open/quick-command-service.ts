@@ -221,22 +221,9 @@ export class CommandQuickOpenItem extends QuickOpenGroupItem {
     }
 
     getLabel(): string {
-        const label = this.command.label!;
-        const category = this.command.category;
-        return category ? `${category}: ` + label : label;
-    }
-
-    // TODO: Find a way to get the original command translation and return it here.
-    getDetail(): string | undefined {
-        const label = this.getLabel();
-        const defaultValue = this.command.label;
-        const category = this.command.category && this.command.category;
-        const description = category ? `${category}: ` + defaultValue : defaultValue;
-        if (label !== description) {
-            return description;
-        } else {
-            return undefined;
-        }
+        return (this.command.category)
+            ? `${this.command.category}: ` + this.command.label!
+            : this.command.label!;
     }
 
     isHidden(): boolean {

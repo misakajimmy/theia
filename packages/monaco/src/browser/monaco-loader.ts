@@ -16,19 +16,13 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { locale } from '@theia/core/lib/common/i18n/localization';
-
 export function loadVsRequire(context: any): Promise<any> {
     // Monaco uses a custom amd loader that over-rides node's require.
     // Keep a reference to an original require so we can restore it after executing the amd loader file.
     const originalRequire = context.require;
-    return new Promise(resolve => {
-        if (document.readyState === 'loading') {
-            window.addEventListener('load', attachVsLoader, { once: true });
-        } else {
-            attachVsLoader();
-        }
-        function attachVsLoader(): void {
+
+    return new Promise<any>(resolve =>
+        window.addEventListener('load', () => {
             const vsLoader = document.createElement('script');
             vsLoader.type = 'text/javascript';
             vsLoader.src = './vs/loader.js';
@@ -42,23 +36,12 @@ export function loadVsRequire(context: any): Promise<any> {
                 resolve(amdRequire);
             });
             document.body.appendChild(vsLoader);
-        };
-    });
+        }, { once: true })
+    );
 }
 
 export function loadMonaco(vsRequire: any): Promise<void> {
     return new Promise<void>(resolve => {
-        // Monaco is only available in certain languages
-        // For now, we don't have a plan to load languages contributed by language packs on startup
-        if (['de', 'es', 'fr', 'it', 'ja', 'ko', 'ru', 'zh-cn', 'zh-tw'].includes(locale)) {
-            vsRequire.config({
-                'vs/nls': {
-                    availableLanguages: {
-                        '*': locale
-                    }
-                }
-            });
-        }
         vsRequire(['vs/editor/editor.main'], () => {
             vsRequire([
                 'vs/platform/commands/common/commands',

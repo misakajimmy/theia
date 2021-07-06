@@ -51,7 +51,6 @@ import { ColorContribution } from '@theia/core/lib/browser/color-application-con
 import { ColorRegistry } from '@theia/core/lib/browser/color-registry';
 import { DebugFunctionBreakpoint } from './model/debug-function-breakpoint';
 import { DebugBreakpoint } from './model/debug-breakpoint';
-import { nls } from '@theia/core/lib/browser/nls';
 
 export namespace DebugMenus {
     export const DEBUG = [...MAIN_MENU_BAR, '6_debug'];
@@ -66,7 +65,7 @@ export namespace DebugMenus {
 
 export namespace DebugCommands {
 
-    export const DEBUG_CATEGORY = nls.localize('vscode/debugCommands/debug', 'Debug');
+    const DEBUG_CATEGORY = 'Debug';
 
     export const START: Command = {
         id: 'workbench.action.debug.start',
@@ -76,7 +75,7 @@ export namespace DebugCommands {
     };
     export const START_NO_DEBUG: Command = {
         id: 'workbench.action.debug.run',
-        label: nls.localize('vscode/debugCommands/startWithoutDebugging', '{0}: Start Without Debugging', DEBUG_CATEGORY)
+        label: 'Debug: Start Without Debugging'
     };
     export const STOP: Command = {
         id: 'workbench.action.debug.stop',
@@ -483,11 +482,9 @@ export class DebugFrontendApplicationContribution extends AbstractViewContributi
         super.registerMenus(menus);
         const registerMenuActions = (menuPath: string[], ...commands: Command[]) => {
             for (const [index, command] of commands.entries()) {
-                const label = command.label;
-                const debug = DebugCommands.DEBUG_CATEGORY;
                 menus.registerMenuAction(menuPath, {
                     commandId: command.id,
-                    label: label && label.startsWith(debug) && label.slice(debug.length) || label,
+                    label: command.label && command.label.startsWith('Debug: ') && command.label.slice('Debug: '.length) || command.label,
                     icon: command.iconClass,
                     order: String.fromCharCode('a'.charCodeAt(0) + index)
                 });
