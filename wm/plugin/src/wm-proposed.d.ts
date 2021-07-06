@@ -31,6 +31,7 @@ declare module '@wm/plugin' {
             baudRate?: number;
             dataBits?: number;
             stopBits?: number;
+            // @ts-ignore
             parity?: ParityType;
             bufferSize?: number;
             flowControl?: FlowControlType;
