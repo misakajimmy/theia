@@ -81,6 +81,7 @@
   "workspaces": [
     "dev-packages/*",
     "packages/*",
+    "wm/*",
     "examples/*"
   ],
   "theiaPluginsDir": "plugins",

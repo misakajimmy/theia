@@ -183,6 +183,21 @@
       ],
       "@theia/ovsx-client/lib/*": [
         "dev-packages/ovsx-client/src/*"
+      ],
+      "@ds/webserial/*": [
+        "wm/webserial/*"
+      ],
+      "@wm/webserial/*": [
+        "wm/webserial/*"
+      ],
+      "@wm/dialog/*": [
+        "wm/dialog/*"
+      ],
+      "@wm/plugin/*": [
+        "wm/plugin/*"
+      ],
+      "@wm/plugin-ext/*": [
+        "wm/plugin-ext/*"
       ]
     }
   }

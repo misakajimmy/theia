@@ -1,0 +1,33 @@
+{
+    "name": "@wm/webserial",
+    "version": "1.0.0",
+    "keywords": [
+        "theia-extension"
+    ],
+    "files": [
+        "lib",
+        "src"
+    ],
+    "dependencies": {
+        "@theia/core": "1.15.0",
+        "@theia/terminal": "1.15.0",
+        "bluebird": "^3.7.2"
+    },
+    "devDependencies": {
+        "@types/bluebird": "^3.5.33",
+        "rimraf": "latest",
+        "typescript": "latest"
+    },
+    "scripts": {
+        "prepare": "yarn run clean && yarn run build",
+        "clean": "rimraf lib",
+        "build": "tsc",
+        "watch": "tsc -w",
+        "publish:next": "yarn publish  --registry=https://npm.blackwalnut.tech/ --no-git-tag-version"
+    },
+    "theiaExtensions": [
+        {
+            "frontend": "lib/browser/webserial-frontend-module"
+        }
+    ]
+}

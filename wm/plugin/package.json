@@ -1,0 +1,24 @@
+{
+    "name": "@wm/plugin",
+    "author": "misakajimmy",
+    "keywords": [
+        "theia-extension"
+    ],
+    "types": "./src/wm.d.ts",
+    "version": "1.0.0",
+    "files": [
+        "src"
+    ],
+    "dependencies": {
+        "@theia/core": "1.15.0",
+        "@theia/terminal": "1.15.0",
+        "bluebird": "^3.7.2"
+    },
+    "scripts": {
+        "prepare": "",
+        "clean": "rimraf lib",
+        "build": "",
+        "watch": "",
+        "publish:next": "yarn publish  --registry=https://npm.blackwalnut.tech/ --no-git-tag-version"
+    }
+}

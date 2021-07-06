@@ -1,0 +1,36 @@
+{
+    "name": "@wm/dialog",
+    "version": "1.0.0",
+    "author": "misakajimmy",
+    "keywords": [
+        "theia-extension"
+    ],
+    "files": [
+        "lib",
+        "src"
+    ],
+    "dependencies": {
+        "@theia/core": "1.15.0",
+        "react": "^16.8.0",
+        "bluebird": "^3.7.2",
+        "copyfiles": "^2.4.1"
+    },
+    "devDependencies": {
+        "@types/bluebird": "^3.5.33",
+        "rimraf": "latest",
+        "typescript": "latest"
+    },
+    "scripts": {
+        "prepare": "yarn run clean && yarn run build && yarn copy-files",
+        "clean": "rimraf lib",
+        "build": "node_modules/.bin/tsc",
+        "watch": "node_modules/.bin/tsc -w",
+        "copy-files": "copyfiles -u 1 src/browser/style/*  lib",
+        "publish:next": "yarn publish  --registry=https://npm.blackwalnut.tech/ --no-git-tag-version"
+    },
+    "theiaExtensions": [
+        {
+            "frontend": "lib/browser/dialog-frontend-module"
+        }
+    ]
+}

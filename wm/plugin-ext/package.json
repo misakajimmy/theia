@@ -1,0 +1,43 @@
+{
+    "name": "@wm/plugin-ext",
+    "version": "1.0.0",
+    "author": "misakajimmy",
+    "keywords": [
+        "theia-extension"
+    ],
+    "files": [
+        "lib",
+        "src"
+    ],
+    "theiaExtensions": [
+        {
+            "frontend": "lib/browser/ds-frontend-module",
+            "backend": "lib/node/ds-backend-module"
+        }
+    ],
+    "dependencies": {
+        "@theia/core": "1.15.0",
+        "@theia/plugin-ext": "1.15.0",
+        "@wm/plugin": "1.0.0",
+        "@wm/webserial": "1.0.0",
+        "@wm/dialog": "1.0.0",
+        "bluebird": "^3.7.2"
+    },
+    "devDependencies": {
+        "@types/bluebird": "^3.5.33",
+        "clean-webpack-plugin": "^0.1.19",
+        "webpack": "^4.20.2",
+        "webpack-cli": "^3.1.1"
+    },
+    "scripts": {
+        "prepare": "yarn clean && yarn build",
+        "clean": "rimraf lib",
+        "compile": "tsc",
+        "lint": "if-env SKIP_LINT=true && echo 'skip lint check' || eslint --cache=true --no-error-on-unmatched-pattern=true '{src,tests}/**/*.ts'",
+        "lint:fix": "eslint --fix --cache=true --no-error-on-unmatched-pattern=true \"{src,tests}/**/*.{ts,tsx}\"",
+        "build": "concurrently -n \"compile\" -c \"red,green,blue\" \"yarn compile\" && yarn run compileWorker",
+        "compileWorker": "webpack-cli --config webpack.config.js",
+        "watch": "tsc -w",
+        "publish:next": "yarn publish  --registry=https://npm.blackwalnut.tech/ --no-git-tag-version"
+    }
+}
