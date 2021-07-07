@@ -19,7 +19,7 @@ const pluginPath = path.resolve(__dirname, '../../lib/webworker');
 @injectable()
 export class DsPluginApiContribution implements BackendApplicationContribution {
   configure(app: express.Application): void {
-    app.get('/ds/api/:path(*)', (req, res) => {
+    app.get('/wm/api/:path(*)', (req, res) => {
       const filePath: string = req.params.path;
       res.sendFile(path.resolve(pluginPath, filePath));
     });

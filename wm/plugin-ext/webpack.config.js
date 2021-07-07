@@ -34,9 +34,9 @@ module.exports = {
         extensions: ['.ts', '.js']
     },
     output: {
-        filename: 'ds-api-worker-provider.js',
+        filename: 'wm-api-worker-provider.js',
         libraryTarget: "var",
-        library: "ds_api_provider",
+        library: "wm_api_provider",
         path: path.resolve(__dirname, 'lib/webworker')
     }
 }

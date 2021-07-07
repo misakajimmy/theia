@@ -11,93 +11,93 @@ export interface DsApiFactory {
 }
 
 export function createAPIFactory(rpc: RPCProtocol): DsApiFactory {
-    const dsWebSerialImpl = rpc.set(PLUGIN_RPC_CONTEXT.DS_WEBSERIAL, new DsWebserialImpl(rpc));
-    const dsDialogImpl = rpc.set(PLUGIN_RPC_CONTEXT.DS_DIALOG, new DsDialogImpl(rpc));
+    const wmWebSerialImpl = rpc.set(PLUGIN_RPC_CONTEXT.DS_WEBSERIAL, new DsWebserialImpl(rpc));
+    const wmDialogImpl = rpc.set(PLUGIN_RPC_CONTEXT.DS_DIALOG, new DsDialogImpl(rpc));
 
     return function (plugin: Plugin): typeof wm {
         const webserial: typeof wm.webserial = {
 
             requestPort(filters?: SerialPortFilter[]): Promise<boolean> {
-                return dsWebSerialImpl.requestPort(filters);
+                return wmWebSerialImpl.requestPort(filters);
             },
 
             openSerialPort(serialOptions?: SerialOptions): Promise<boolean> {
-                return dsWebSerialImpl.openSerialPort(serialOptions);
+                return wmWebSerialImpl.openSerialPort(serialOptions);
             },
 
             disconnect(): Promise<boolean> {
-                return dsWebSerialImpl.disconnect();
+                return wmWebSerialImpl.disconnect();
             },
 
             write(data: Uint8Array | string, length?: number): Promise<void> {
-                return dsWebSerialImpl.write(data);
+                return wmWebSerialImpl.write(data);
             },
 
             onData(channel: string): number[] {
-                return dsWebSerialImpl.onData(channel);
+                return wmWebSerialImpl.onData(channel);
             },
 
             openTerminal(): Promise<void> {
-                return dsWebSerialImpl.openTerminal();
+                return wmWebSerialImpl.openTerminal();
             },
 
             closeTerminal(): boolean {
-                return dsWebSerialImpl.closeTerminal();
+                return wmWebSerialImpl.closeTerminal();
             },
 
             connected(): boolean {
-                return dsWebSerialImpl.connected();
+                return wmWebSerialImpl.connected();
             },
 
             terminalOpened(): boolean {
-                return dsWebSerialImpl.terminalOpened();
+                return wmWebSerialImpl.terminalOpened();
             },
 
             writeListData(data: number[]): Promise<void> {
-                return dsWebSerialImpl.writeListData(data);
+                return wmWebSerialImpl.writeListData(data);
             },
 
             clearData(channel: string): void {
-                return dsWebSerialImpl.clearData(channel);
+                return wmWebSerialImpl.clearData(channel);
             }
         };
 
         const processBar: typeof wm.dialog.processBar = {
             open(style: string): void {
-                return dsDialogImpl.processBarOpen(style);
+                return wmDialogImpl.processBarOpen(style);
             },
             setPercent(percent: number): void {
-                return dsDialogImpl.processBarSetPercent(percent);
+                return wmDialogImpl.processBarSetPercent(percent);
             },
             setTitle(title: string): void {
-                return dsDialogImpl.processBarSetTitle(title);
+                return wmDialogImpl.processBarSetTitle(title);
             },
             removeCloseButtom(): void {
-                return dsDialogImpl.processBarRemoveCloseButtom();
+                return wmDialogImpl.processBarRemoveCloseButtom();
             },
             close(): void {
-                return dsDialogImpl.processBarClose();
+                return wmDialogImpl.processBarClose();
             },
             setContent(innerHTML: string): void {
-                return dsDialogImpl.processBarSetContent(innerHTML);
+                return wmDialogImpl.processBarSetContent(innerHTML);
             }
         };
 
         const message: typeof wm.dialog.message = {
             open():void {
-                return dsDialogImpl.messageOpen();
+                return wmDialogImpl.messageOpen();
             },
             setTitle(title: string): void {
-                return dsDialogImpl.messageSetTitle(title);
+                return wmDialogImpl.messageSetTitle(title);
             },
             closeButtom(): void {
-                return dsDialogImpl.messageCloseButtom();
+                return wmDialogImpl.messageCloseButtom();
             },
             setContent(innerHTML: string): void {
-                return dsDialogImpl.messageSetContent(innerHTML);
+                return wmDialogImpl.messageSetContent(innerHTML);
             },
             close(): void {
-                return dsDialogImpl.messageClose();
+                return wmDialogImpl.messageClose();
             }
         }
 

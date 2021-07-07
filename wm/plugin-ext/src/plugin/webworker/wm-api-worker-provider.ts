@@ -10,7 +10,7 @@ const pluginsApiImpl = new Map<string, typeof wm>();
 let defaultApi: typeof wm;
 
 export const initializeApi: ExtPluginApiFrontendInitializationFn = (rpc: RPCProtocol, plugins: Map<string, Plugin>) => {
-    const dsApiFactory = createAPIFactory(rpc);
+    const wmApiFactory = createAPIFactory(rpc);
     const handler = {
         get: (target: any, name: string) => {
             console.log(name);
@@ -18,7 +18,7 @@ export const initializeApi: ExtPluginApiFrontendInitializationFn = (rpc: RPCProt
             if (plugin) {
                 let apiImpl = pluginsApiImpl.get(plugin.model.id);
                 if (!apiImpl) {
-                    apiImpl = dsApiFactory(plugin);
+                    apiImpl = wmApiFactory(plugin);
                     pluginsApiImpl.set(plugin.model.id, apiImpl);
                 }
                 console.log(apiImpl);
@@ -26,16 +26,16 @@ export const initializeApi: ExtPluginApiFrontendInitializationFn = (rpc: RPCProt
             }
 
             if (!defaultApi) {
-                defaultApi = dsApiFactory(emptyPlugin);
+                defaultApi = wmApiFactory(emptyPlugin);
             }
 
             return defaultApi;
         },
     };
-    console.log(ctx.ds);
+    console.log(ctx.wm);
     console.log(ctx.theia);
-    ctx['ds'] = new Proxy(Object.create(null), handler);
-    console.log(dsApiFactory)
-    console.log(ctx.ds.Handler);
+    ctx['wm'] = new Proxy(Object.create(null), handler);
+    console.log(wmApiFactory)
+    console.log(ctx.wm.Handler);
     console.log(ctx.theia.Handler);
 };

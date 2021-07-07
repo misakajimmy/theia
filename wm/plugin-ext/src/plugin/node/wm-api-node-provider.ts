@@ -1,4 +1,4 @@
-import * as ds from "@wm/plugin";
+import * as wm from "@wm/plugin";
 
 import {ExtPluginApiBackendInitializationFn} from "@theia/plugin-ext";
 import {Plugin, PluginManager, emptyPlugin} from '@theia/plugin-ext/lib/common/plugin-api-rpc';
@@ -6,14 +6,14 @@ import {RPCProtocol} from "@theia/plugin-ext/lib/common/rpc-protocol";
 import {createAPIFactory} from "../wm-api";
 import {DsApiFactory} from "../wm-api";
 
-const pluginsApiImpl = new Map<string, typeof ds>();
-let defaultApi: typeof ds;
+const pluginsApiImpl = new Map<string, typeof wm>();
+let defaultApi: typeof wm;
 let isLoadOverride = false;
-let dsApiFactory: DsApiFactory;
+let wmApiFactory: DsApiFactory;
 let plugins: PluginManager;
 
 export const provideApi: ExtPluginApiBackendInitializationFn = (rpc: RPCProtocol, pluginManager: PluginManager) => {
-    dsApiFactory = createAPIFactory(rpc);
+    wmApiFactory = createAPIFactory(rpc);
     plugins = pluginManager;
 
     if (!isLoadOverride) {
@@ -38,7 +38,7 @@ function overrideInternalLoad(): void {
         if (plugin) {
             let apiImpl = pluginsApiImpl.get(plugin.model.id);
             if (!apiImpl) {
-                apiImpl = dsApiFactory(plugin);
+                apiImpl = wmApiFactory(plugin);
                 pluginsApiImpl.set(plugin.model.id, apiImpl);
             }
             return apiImpl;
@@ -46,7 +46,7 @@ function overrideInternalLoad(): void {
 
         if (!defaultApi) {
             console.warn(`Could not identify plugin for 'Ds' require call from ${parent.filename}`);
-            defaultApi = dsApiFactory(emptyPlugin);
+            defaultApi = wmApiFactory(emptyPlugin);
         }
 
         return defaultApi;

@@ -8,11 +8,11 @@ export class WmPluginApiProvider implements ExtPluginApiProvider {
     provideApi(): ExtPluginApi {
         return {
             frontendExtApi: {
-                initPath: './ds/api/ds-api-worker-provider.js',
+                initPath: './wm/api/wm-api-worker-provider.js',
                 initFunction: 'initializeApi',
-                initVariable: 'ds_api_provider',
+                initVariable: 'wm_api_provider',
             },
-            backendInitPath: path.join('@ds/plugins-ext/lib/plugins/node/che-api-node-provider.js'),
+            backendInitPath: path.join('@wm/plugins-ext/lib/plugins/node/che-api-node-provider.js'),
         }
     }
 }

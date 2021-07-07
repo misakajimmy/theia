@@ -6930,12 +6930,12 @@ is-retry-allowed@^1.0.0:
 
 is-stream@^1.0.0, is-stream@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.nlark.com/is-stream/download/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+  resolved "https://registry.npm.taobao.org/is-stream/download/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
   integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
 
 is-stream@^2.0.0:
   version "2.0.0"
-  resolved "https://registry.nlark.com/is-stream/download/is-stream-2.0.0.tgz#bde9c32680d6fae04129d6ac9d921ce7815f78e3"
+  resolved "https://registry.npm.taobao.org/is-stream/download/is-stream-2.0.0.tgz#bde9c32680d6fae04129d6ac9d921ce7815f78e3"
   integrity sha1-venDJoDW+uBBKdasnZIc54FfeOM=
 
 is-string@^1.0.5, is-string@^1.0.6:
@@ -11943,12 +11943,12 @@ typedoc@^0.17.7:
 
 typescript@^3.9.2:
   version "3.9.10"
-  resolved "https://registry.nlark.com/typescript/download/typescript-3.9.10.tgz?cache=0&sync_timestamp=1625555807520&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
+  resolved "https://registry.nlark.com/typescript/download/typescript-3.9.10.tgz?cache=0&sync_timestamp=1625642043506&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-3.9.10.tgz#70f3910ac7a51ed6bef79da7800690b19bf778b8"
   integrity sha1-cPORCselHta+952ngAaQsZv3eLg=
 
 typescript@latest:
   version "4.3.5"
-  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.5.tgz?cache=0&sync_timestamp=1625555807520&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
+  resolved "https://registry.nlark.com/typescript/download/typescript-4.3.5.tgz?cache=0&sync_timestamp=1625642043506&other_urls=https%3A%2F%2Fregistry.nlark.com%2Ftypescript%2Fdownload%2Ftypescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
   integrity sha1-TRw3zBbok5c8RaBohrcRMjTxGfQ=
 
 uc.micro@^1.0.1, uc.micro@^1.0.5:

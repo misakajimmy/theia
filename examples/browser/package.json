@@ -1,4 +1,4 @@
-﻿{
+{
   "private": true,
   "name": "@theia/example-browser",
   "version": "1.15.0",
@@ -62,7 +62,7 @@
     "clean": "theia clean",
     "build": "theia build --mode development",
     "watch": "yarn build --watch",
-    "start": "theia start --plugins=local-dir:../../plugins",
+    "start": "theia start --plugins=local-dir:../../wm-plugins",
     "start:debug": "yarn start --log-level=debug",
     "test": "theia test . --plugins=local-dir:../../plugins --test-spec=../api-tests/**/*.spec.js",
     "test:debug": "yarn test --test-inspect",

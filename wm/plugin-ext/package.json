@@ -11,8 +11,8 @@
     ],
     "theiaExtensions": [
         {
-            "frontend": "lib/browser/ds-frontend-module",
-            "backend": "lib/node/ds-backend-module"
+            "frontend": "lib/browser/wm-frontend-module",
+            "backend": "lib/node/wm-backend-module"
         }
     ],
     "dependencies": {
