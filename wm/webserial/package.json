@@ -19,7 +19,7 @@
         "typescript": "latest"
     },
     "scripts": {
-        "prepare": "yarn run clean && yarn run build",
+        "prepare": "yarn clean && yarn build",
         "clean": "rimraf lib",
         "build": "tsc",
         "watch": "tsc -w",

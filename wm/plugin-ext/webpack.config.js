@@ -2,7 +2,7 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './lib/plugin/webworker/ds-api-worker-provider.js',
+    entry: './lib/plugin/webworker/wm-api-worker-provider.js',
     devtool: 'source-map',
     mode: 'production',
     node:{
