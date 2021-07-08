@@ -15,6 +15,7 @@
     "devDependencies": {
         "@wm/plugin": "file:../../wm/plugin",
         "@theia/plugin": "file:../../packages/plugin",
+        "@theia/plugin-packager": "latest",
         "rimraf": "2.6.2",
         "typescript": "latest",
         "typescript-formatter": "7.2.2",
@@ -30,7 +31,7 @@
         "format-code": "tsfmt -r",
         "watch": "webpack-cli -w --config webpack.config.js",
         "compile": "webpack-cli --config webpack.config.js",
-        "build": "yarn run format-code && yarn run compile"
+        "build": "yarn run format-code && yarn run compile  && theia-plugin pack"
     },
     "engines": {
         "theiaPlugin": "next"

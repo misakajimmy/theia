@@ -12,7 +12,7 @@ export class WmPluginApiProvider implements ExtPluginApiProvider {
                 initFunction: 'initializeApi',
                 initVariable: 'wm_api_provider',
             },
-            backendInitPath: path.join('@wm/plugins-ext/lib/plugins/node/che-api-node-provider.js'),
+            backendInitPath: path.join('@wm/plugin-ext/lib/plugin/node/wm-api-node-provider.js'),
         }
     }
 }

@@ -45,7 +45,7 @@ function overrideInternalLoad(): void {
         }
 
         if (!defaultApi) {
-            console.warn(`Could not identify plugin for 'Ds' require call from ${parent.filename}`);
+            console.warn(`Could not identify plugin for 'WS' require call from ${parent.filename}`);
             defaultApi = wmApiFactory(emptyPlugin);
         }
 

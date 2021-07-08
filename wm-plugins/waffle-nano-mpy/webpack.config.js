@@ -45,7 +45,7 @@ module.exports = {
     },
     externals: {
         "@wm/plugin": "wm.plugin",
-        "@ds/plugin": "ds.plugin"
+        "@theia/plugin": "theia.plugin"
     },
     optimization: {
         minimizer: [new Uglify()],
